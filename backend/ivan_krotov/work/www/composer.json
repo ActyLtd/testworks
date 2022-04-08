@@ -1,0 +1,12 @@
+{
+    "name": "ivan/www",
+    "autoload": {
+        "psr-4": {
+            "root\\": "src/"
+        }
+    },
+    "require": {
+      "ext-pdo": "*",
+      "ext-json": "*"
+    }
+}
