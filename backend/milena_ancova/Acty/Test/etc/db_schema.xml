@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <table name="organization" resource="default" comment="Organization table">
+
+        <column xsi:type="int" name="id" identity="true" nullable="false"  comment="Organization ID" />
+
+        <column xsi:type="varchar" name="name"
+                length="255"
+                nullable="false"
+                comment="Organization Name" />
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id" />
+        </constraint>
+        <constraint xsi:type="unique" referenceId="ORGANIZATION_NAME_UNIQUE">
+            <column name="name"/>
+        </constraint>
+    </table>
+
+    
+    <table name="adjacency_list" resource="default" comment="Adjacency table">
+
+        <column xsi:type="int" name="id" identity="true" nullable="false" comment="Daughter ID" />
+
+        <column xsi:type="int" name="parent_id"  nullable="false" comment="Daughter ID" />
+
+        <column xsi:type="int" name="child_id" nullable="false" comment="Daughter ID" />
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id" />
+        </constraint>
+
+        <constraint xsi:type="foreign" referenceId="ADJACENCY_LIST_PARENT_ID_ORGANIZATION_ID"
+                    table="adjacency_list" column="parent_id"
+                    referenceTable="organization" referenceColumn="id"
+                    onDelete="NO ACTION"/>
+
+        <constraint xsi:type="foreign" referenceId="ADJACENCY_LIST_CHILD_ID_ORGANIZATION_ID"
+                    table="adjacency_list" column="child_id"
+                    referenceTable="organization" referenceColumn="id"
+                    onDelete="NO ACTION"/>
+
+         <constraint xsi:type="unique" referenceId="ORGANIZATION_PARENT_CHILD_UNIQUE">
+                    <column name="parent_id"/>
+                    <column name="child_id"/>
+        </constraint>
+     </table>
+</schema>

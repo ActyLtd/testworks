@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Acty\Test\Api\OrganizationManagementInterface" type="Acty\Test\Model\OrganizationManagement"/>
+    <preference for="Acty\Test\Api\OrganizationListInterface" type="Acty\Test\Model\ListManagment"/>
+</config>
+ 
