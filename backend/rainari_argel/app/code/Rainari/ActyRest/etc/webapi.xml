@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/rainari/getOrganization/:name" method="GET">
+        <service class="Rainari\ActyRest\Api\OrganizationInterface" method="getOrganization" />
+        <resources>
+            <resource ref="admin" />
+        </resources>
+    </route>
+    <route url="/V1/rainari/postOrganization" method="POST">
+        <service class="Rainari\ActyRest\Api\OrganizationInterface" method="postOrganization" />
+        <resources>
+            <resource ref="admin" />
+        </resources>
+    </route>
+</routes>
